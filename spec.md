@@ -113,21 +113,58 @@ Directory of markdown files containing domain knowledge this member needs. No sp
 
 Context files are loaded when the member is activated. They provide the domain expertise that makes a generic agent into a specialized worker.
 
-## Team Directory Convention
+## Two Formats
 
-Members live in a `team/` directory at the project root:
+Members support two formats: flat file and directory.
+
+### Flat file (simple)
+
+A single markdown file with frontmatter. Use this when a member just needs a persona and workflow — no scoped skills, tools, or context.
 
 ```
-project/
-├── CLAUDE.md              ← project instructions
-├── team/
-│   ├── sdr/MEMBER.md
-│   ├── support/MEMBER.md
-│   └── ops/MEMBER.md
-└── src/
+team/
+├── sdr.md
+├── support.md
+└── navigator.md
 ```
 
-Tools detect members by scanning `team/*/MEMBER.md`.
+The flat file uses the same frontmatter schema as MEMBER.md. It IS a valid member definition.
+
+### Directory (full)
+
+A directory with MEMBER.md and optional subdirectories. Use this when a member needs its own skills, tools, or context documents.
+
+```
+team/
+├── sdr/
+│   ├── MEMBER.md
+│   ├── skills/
+│   ├── tools/
+│   └── context/
+```
+
+### Detection order
+
+Tools detect members by scanning the `team/` directory at the project root:
+
+```
+1. team/<name>/MEMBER.md    ← directory format (check first)
+2. team/<name>.md           ← flat file (fallback)
+```
+
+Both formats are equally valid. The directory format is the flat file with optional extras — not a different spec.
+
+### Upgrading
+
+Moving from flat file to directory is non-breaking:
+
+```bash
+# Before: team/sdr.md
+# After:
+mkdir team/sdr
+mv team/sdr.md team/sdr/MEMBER.md
+# Done. Same file, new location. Add skills/ and context/ as needed.
+```
 
 ## Portability
 

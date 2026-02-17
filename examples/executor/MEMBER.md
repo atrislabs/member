@@ -15,7 +15,7 @@ permissions:
   can-approve: false
   approval-required: [delete, refactor-outside-scope]
 
-mcps: []
+tools: []
 ---
 
 ## Persona

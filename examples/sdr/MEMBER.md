@@ -15,9 +15,9 @@ permissions:
   can-delete: false
   approval-required: [send, delete]
 
-mcps:
-  - hubspot
-  - apollo
+tools:
+  - hubspot          # MCP server
+  - apollo           # REST API
 ---
 
 ## Persona

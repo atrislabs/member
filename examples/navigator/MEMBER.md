@@ -15,7 +15,7 @@ permissions:
   can-approve: false
   approval-required: []
 
-mcps: []
+tools: []
 ---
 
 ## Persona

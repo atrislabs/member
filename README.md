@@ -7,12 +7,12 @@ team/
 ├── sdr/
 │   ├── MEMBER.md           ← persona, role, permissions
 │   ├── skills/             ← SKILL.md files (capabilities)
-│   ├── .mcp.json           ← tool servers
+│   ├── tools/              ← MCP servers, APIs, CLIs
 │   └── context/            ← domain knowledge
 └── support/
     ├── MEMBER.md
     ├── skills/
-    ├── .mcp.json
+    ├── tools/
     └── context/
 ```
 
@@ -43,7 +43,7 @@ Project Level
 Team Level
 ├── team/sdr/MEMBER.md           ← member scope
 │   ├── skills/SKILL.md          ← capabilities (existing standard)
-│   ├── .mcp.json                ← tools (existing standard)
+│   ├── tools/                   ← MCP, APIs, CLIs (any tool access)
 │   └── context/                 ← knowledge (just markdown files)
 ```
 
@@ -76,9 +76,10 @@ permissions:
   can-send: false
   approval-required: [send, delete]
 
-mcps:
-  - hubspot
-  - linkedin
+tools:
+  - hubspot          # MCP server (tools/.mcp.json)
+  - apollo           # REST API (tools/apollo.md)
+  - linkedin         # browser tool (tools/linkedin.md)
 ---
 ```
 

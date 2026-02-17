@@ -14,7 +14,9 @@ A **member** is a directory containing everything an AI agent needs to operate a
 ├── skills/                OPTIONAL  Capability definitions
 │   └── <skill-name>/
 │       └── SKILL.md
-├── .mcp.json              OPTIONAL  MCP server configurations
+├── tools/                 OPTIONAL  Tool configurations
+│   ├── .mcp.json                    MCP servers
+│   └── *.md                         API references, CLI tools, etc.
 └── context/               OPTIONAL  Knowledge documents
     └── *.md
 ```
@@ -38,7 +40,7 @@ version: string            # semver (e.g., "1.0.0")
 # OPTIONAL fields
 skills: string[]           # skill names this member uses
 permissions: object        # key-value permission declarations
-mcps: string[]             # MCP server names from .mcp.json
+tools: string[]            # tool names (MCP servers, APIs, CLIs, etc.)
 ---
 ```
 
@@ -71,7 +73,13 @@ permissions:
   scope: internal           # enum constraints
 ```
 
-**mcps** (optional): List of MCP server names. These reference entries in the member's `.mcp.json` file.
+**tools** (optional): List of tool names this member has access to. Tools can be:
+- MCP servers (configured in `tools/.mcp.json`)
+- API integrations (documented in `tools/*.md` with endpoints and auth)
+- CLI tools (documented in `tools/*.md` with commands)
+- Any other tool access the member needs
+
+Tools are broader than MCP. An SDR might have HubSpot via MCP server, Apollo via REST API with a bearer token, and LinkedIn via browser automation. All three go in `tools/`.
 
 #### Body Content
 
@@ -90,9 +98,14 @@ Directory containing SKILL.md files following the [SKILL.md standard](https://ag
 
 Skills define individual capabilities. A member composes multiple skills into a role.
 
-### .mcp.json (optional)
+### tools/ (optional)
 
-MCP server configuration following the [MCP standard](https://modelcontextprotocol.io). Scoped to this member — only these tool servers are available when this member is active.
+Directory containing tool configurations scoped to this member. Can include:
+
+- **`.mcp.json`** — MCP server configurations following the [MCP standard](https://modelcontextprotocol.io)
+- **`<tool-name>.md`** — API references, CLI docs, or any tool documentation the member needs. Follows the same pattern as Atris integration skills: endpoint, auth method, example requests.
+
+Not all tools are MCP servers. REST APIs with bearer tokens, CLI tools, browser automation — anything the member uses to interact with external systems belongs here.
 
 ### context/ (optional)
 
@@ -120,7 +133,7 @@ Tools detect members by scanning `team/*/MEMBER.md`.
 
 A member directory MUST be self-contained enough to function when copied to another project. The only external dependencies are:
 - Shared skills referenced by name (graceful degradation if unavailable)
-- MCP servers that require external setup (credentials, API keys)
+- Tools that require external setup (API keys, MCP servers, CLI installations)
 
 A member directory SHOULD work with only its local skills and context, even if shared skills are unavailable.
 

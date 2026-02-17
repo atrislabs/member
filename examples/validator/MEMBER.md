@@ -16,7 +16,7 @@ permissions:
   can-ship: true
   approval-required: []
 
-mcps: []
+tools: []
 ---
 
 ## Persona

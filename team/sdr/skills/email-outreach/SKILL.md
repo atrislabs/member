@@ -18,13 +18,13 @@ Draft cold email sequences that get replies.
 
 ## Sequence Structure
 
-**Email 1 — The Hook**
+**Email 1 - The Hook**
 Lead with their specific trigger (hiring, launch, funding). Connect it to a problem you solve. One question.
 
-**Email 2 — The Proof**
+**Email 2 - The Proof**
 Different angle. Share a specific result from a similar company. No attachments, no decks.
 
-**Email 3 — The Break**
+**Email 3 - The Break**
 Short. Acknowledge they're busy. Give them an easy out. "Should I stop reaching out?" converts surprisingly well.
 
 ## Anti-patterns

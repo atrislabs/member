@@ -10,18 +10,18 @@ Research prospects and qualify them against the ideal customer profile before ou
 
 ## Research checklist
 
-1. **Company** — What do they do? How big? Recent news?
-2. **Person** — Role, tenure, background. Have they posted anything relevant?
-3. **Trigger** — Why now? New hire, funding, product launch, job posting?
-4. **ICP match** — Do they fit? Check against context/icp.md
-5. **Hook** — What specific thing will you reference in the email?
+1. **Company** - What do they do? How big? Recent news?
+2. **Person** - Role, tenure, background. Have they posted anything relevant?
+3. **Trigger** - Why now? New hire, funding, product launch, job posting?
+4. **ICP match** - Do they fit? Check against context/icp.md
+5. **Hook** - What specific thing will you reference in the email?
 
 ## Qualification criteria
 
 Score each lead:
-- **Strong fit** — Matches ICP, clear trigger, right persona
-- **Maybe** — Partial ICP match, needs more research
-- **Pass** — Doesn't match, move on immediately
+- **Strong fit** - Matches ICP, clear trigger, right persona
+- **Maybe** - Partial ICP match, needs more research
+- **Pass** - Doesn't match, move on immediately
 
 Don't spend more than 5 minutes researching a lead. If you can't find a hook in 5 minutes, they're a Pass.
 

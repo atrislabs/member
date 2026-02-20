@@ -26,7 +26,7 @@ AI tooling has standards for individual pieces:
 | .mcp.json | Tool server access | Adopted (Anthropic, OpenAI, Google) |
 | AGENTS.md | Project instructions | Adopted (60,000+ repos) |
 
-Nobody has a standard for the **bundle** — the thing that says "this AI worker has these skills, these tools, this persona, these permissions, and this context."
+Nobody has a standard for the **bundle** - the thing that says "this AI worker has these skills, these tools, this persona, these permissions, and this context."
 
 Today, teams cobble this together with system prompts, scattered files, and verbal instructions. There's no portable, shareable unit for "here's a complete AI worker."
 
@@ -93,8 +93,8 @@ tools:
 Below the frontmatter: persona, workflow, and rules the member follows.
 
 The frontmatter requires only two fields:
-- `name` — kebab-case identifier for this member
-- `role` — human-readable job title
+- `name` - kebab-case identifier for this member
+- `role` - human-readable job title
 
 Optional fields: `description`, `version`, `skills`, `permissions`, `tools`.
 
@@ -102,7 +102,7 @@ Optional fields: `description`, `version`, `skills`, `permissions`, `tools`.
 
 Members support a flat file for simple cases and a directory for full members:
 
-**Flat file** — just a markdown file with frontmatter:
+**Flat file** - just a markdown file with frontmatter:
 ```
 team/
 ├── navigator.md
@@ -110,7 +110,7 @@ team/
 └── validator.md
 ```
 
-**Directory** — when a member needs its own skills, tools, or context:
+**Directory** - when a member needs its own skills, tools, or context:
 ```
 team/
 └── sdr/
@@ -141,11 +141,11 @@ Same frontmatter, same format. The directory just adds room for extras. Detectio
     └── *.md
 ```
 
-**skills/** — [SKILL.md](https://agentskills.io) files defining individual capabilities. A member composes multiple skills into a role.
+**skills/** - [SKILL.md](https://agentskills.io) files defining individual capabilities. A member composes multiple skills into a role.
 
-**tools/** — Any tool access the member needs. MCP servers via `.mcp.json`, REST APIs as markdown docs with endpoints and auth, CLI tools as markdown docs with commands. Not everything is MCP.
+**tools/** - Any tool access the member needs. MCP servers via `.mcp.json`, REST APIs as markdown docs with endpoints and auth, CLI tools as markdown docs with commands. Not everything is MCP.
 
-**context/** — Markdown files with domain knowledge. Sales playbooks, ICPs, SOPs, customer docs. No special format — just docs the member references.
+**context/** - Markdown files with domain knowledge. Sales playbooks, ICPs, SOPs, customer docs. No special format - just docs the member references.
 
 # Using Members with AI Tools
 
@@ -176,9 +176,9 @@ You are the **navigator**. Read `team/navigator/MEMBER.md` before doing anything
 **Multi-agent via subagents:**
 ```
 Main agent (reads CLAUDE.md)
-├── Task: "Act as navigator — read team/navigator/MEMBER.md, plan this feature"
-├── Task: "Act as executor — read team/executor/MEMBER.md, build from the plan"
-└── Task: "Act as validator — read team/validator/MEMBER.md, review the changes"
+├── Task: "Act as navigator - read team/navigator/MEMBER.md, plan this feature"
+├── Task: "Act as executor - read team/executor/MEMBER.md, build from the plan"
+└── Task: "Act as validator - read team/validator/MEMBER.md, review the changes"
 ```
 
 Each subagent loads a different MEMBER.md. Different persona, different skills, different permissions.

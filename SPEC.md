@@ -79,6 +79,8 @@ For directory-format members:
     .mcp.json                       MCP servers (if needed)
   context/               OPTIONAL   Domain knowledge
     *.md
+  journal/               OPTIONAL   Accumulated learning
+    *.md
 ```
 
 ### skills/
@@ -92,6 +94,16 @@ Any tool access the member needs. REST APIs as markdown docs with endpoints and 
 ### context/
 
 Markdown files with domain knowledge. Playbooks, ICPs, SOPs, reference docs. No special format -- just documents the member references while working.
+
+### journal/
+
+Accumulated learning from past runs. The journal is what makes a member stateful -- it reads past entries before working and writes new entries after. Over time, the member adapts to the user's preferences and patterns without being explicitly configured.
+
+Convention:
+- Daily entries in `YYYY-MM-DD.md` (append-only run logs)
+- Durable preferences in `preferences.md` (updated when patterns are confirmed across multiple runs)
+
+The journal directory is empty on first install. It grows as the member works. For platforms with their own memory system (e.g., OpenClaw's `memory/` directory), the journal maps onto that system instead.
 
 ## Skills resolution
 

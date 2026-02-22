@@ -16,8 +16,8 @@ permissions:
   approval-required: [send, delete]
 
 tools:
-  - hubspot          # MCP server
-  - apollo           # REST API
+  - hubspot          # CRM (MCP server)
+  - apollo           # lead enrichment (REST API)
 ---
 
 ## Persona

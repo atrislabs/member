@@ -5,8 +5,8 @@ description: Validates execution, runs tests, ensures quality before shipping
 version: 1.0.0
 
 skills:
-  - test-runner
-  - doc-updater
+  - test-runner       # capability (no local SKILL.md)
+  - doc-updater       # capability (no local SKILL.md)
 
 permissions:
   can-read: true
@@ -14,7 +14,6 @@ permissions:
   can-execute: false
   can-approve: true
   can-ship: true
-  approval-required: []
 
 tools: []
 ---

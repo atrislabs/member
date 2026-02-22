@@ -5,8 +5,8 @@ description: Executes from build specs, one step at a time
 version: 1.0.0
 
 skills:
-  - code-writer
-  - test-runner
+  - code-writer       # capability (no local SKILL.md)
+  - test-runner       # capability (no local SKILL.md)
 
 permissions:
   can-read: true
@@ -14,8 +14,6 @@ permissions:
   can-execute: true
   can-approve: false
   approval-required: [delete, refactor-outside-scope]
-
-tools: []
 ---
 
 ## Persona

@@ -9,11 +9,11 @@ team/
 │   ├── skills/             <- SKILL.md files (capabilities)
 │   ├── tools/              <- APIs, CLIs, MCP servers
 │   └── context/            <- domain knowledge
-└── support/
+└── chief-of-staff/
     ├── MEMBER.md
     ├── skills/
-    ├── tools/
-    └── context/
+    ├── context/
+    └── journal/
 ```
 
 ## The problem
@@ -117,7 +117,7 @@ When assigned a role, read the corresponding MEMBER.md first.
 ```
 
 ```
-codex "As the support agent (see team/support/MEMBER.md), triage these new issues"
+codex "As the SDR (see team/sdr/MEMBER.md), qualify these inbound leads"
 ```
 
 ### Cursor
@@ -126,7 +126,7 @@ Reference members in `.cursorrules`:
 
 ```markdown
 This project has AI team members defined in team/*/MEMBER.md.
-When working on support tasks, reference team/support/MEMBER.md.
+When working on outreach tasks, reference team/sdr/MEMBER.md.
 ```
 
 ### Any tool

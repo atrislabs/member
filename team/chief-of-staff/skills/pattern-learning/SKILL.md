@@ -8,7 +8,7 @@ After every briefing, observe what happened and update the journal. This is how 
 
 ## After Each Briefing
 
-Write a journal entry to `memory/YYYY-MM-DD.md`:
+Write a journal entry to `journal/YYYY-MM-DD.md`:
 
 ```markdown
 ## Briefing - Feb 22
@@ -24,7 +24,7 @@ Keep entries short. Facts only - what was delivered, what the user did with it.
 
 ## Pattern Detection
 
-After 3+ days of consistent behavior, write a durable preference to `MEMORY.md`:
+After 3+ days of consistent behavior, write a durable preference to `journal/preferences.md`:
 
 ```markdown
 ## Briefing Preferences
@@ -53,12 +53,13 @@ Rules for promoting to durable memory:
 | Day-of-week patterns | Routine varies by day | Build day-specific templates |
 | User edits briefing time | Timing preference | Note preferred delivery window |
 
-## Memory Architecture
+## Storage
 
-Maps to OpenClaw's memory system:
+Write to the member's `journal/` directory:
 
-- **`memory/YYYY-MM-DD.md`** - Daily journal entries (append-only, one per briefing)
-- **`MEMORY.md`** - Durable preferences (updated when patterns are confirmed)
-- **`memory_search`** - Recall past briefings and preferences before building today's
+- **`journal/YYYY-MM-DD.md`** - Daily entries (append-only, one per briefing)
+- **`journal/preferences.md`** - Durable preferences (updated when patterns are confirmed)
 
-For non-OpenClaw runtimes: the journal directory convention in MEMBER.md serves the same purpose. Write daily entries to `journal/YYYY-MM-DD.md`, write durable preferences to `journal/preferences.md`.
+Before each briefing, read recent journal entries and `journal/preferences.md` to recall past patterns.
+
+For platforms with their own memory system (e.g., OpenClaw's `memory/` directory and `memory_search`), map the journal onto that system instead.

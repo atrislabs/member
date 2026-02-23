@@ -15,10 +15,6 @@ permissions:
   can-write-memory: true
   can-send: false
   approval-required: [send, schedule, delete]
-
-tools:
-  - calendar           # read today's schedule
-  - web-search         # pull relevant news
 ---
 
 ## Persona

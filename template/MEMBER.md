@@ -15,6 +15,12 @@ description: One-line description of what this member does
 
 # tools:
 #   - tool-name          # API, CLI, MCP server, etc.
+
+# Optional directories (create alongside this file):
+#   skills/<name>/SKILL.md   - capability definitions
+#   tools/                   - API docs, CLI guides, .mcp.json
+#   context/                 - domain knowledge (playbooks, SOPs)
+#   journal/                 - accumulated learning (grows over time)
 ---
 
 ## Persona

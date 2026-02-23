@@ -14,8 +14,6 @@ permissions:
   can-execute: false
   can-approve: true
   can-ship: true
-
-tools: []
 ---
 
 ## Persona

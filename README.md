@@ -1,40 +1,30 @@
 # MEMBER.md
 
-A format for defining complete AI team members. Composes existing standards ([SKILL.md](https://agentskills.io), [AGENTS.md](https://github.com/anthropics/agents-md)) and any tool access (APIs, CLIs, MCP servers) into a single deployable unit.
+A directory standard for defining AI agent team members in your project.
+
+As frameworks for managing fleets of agents start to mature, each agent needs a clear role, scoped tools, and a way to improve over time. MEMBER.md defines that.
 
 ```
-team/
-├── sdr/
-│   ├── MEMBER.md           <- persona, role, permissions
-│   ├── skills/             <- SKILL.md files (capabilities)
-│   ├── tools/              <- APIs, CLIs, MCP servers
-│   └── context/            <- domain knowledge
-└── chief-of-staff/
-    ├── MEMBER.md
-    ├── skills/
-    ├── context/
-    └── journal/
+team/content-lead/
+  MEMBER.md        # role, persona, permissions
+  skills/          # planner, writer, copy-editor
+  tools/           # x-search API
+  journal/         # what it learned over time
 ```
 
 ## The problem
 
-AI tooling has standards for individual pieces:
+Agents start from scratch every session. The same setup, the same context, the same corrections. There's no way for an agent to develop a feel for the task or build on what it learned last time.
 
-| Standard | What it defines | Status |
-|----------|----------------|--------|
-| SKILL.md | A single capability | Adopted (Claude, Codex, Cursor) |
-| .mcp.json | Tool server config | Adopted (Anthropic, OpenAI, Google) |
-| AGENTS.md | Project instructions | Adopted (60,000+ repos) |
+There are standards for individual pieces (SKILL.md for capabilities, MCP for tool servers, AGENTS.md for project instructions) but nothing for the complete worker. MEMBER.md bundles them into a single portable unit.
 
-Nobody has a standard for the **bundle** - the thing that says "this AI worker has these skills, these tools, this persona, these permissions, and this context."
+## Three parts
 
-Today, teams cobble this together with system prompts, scattered files, and verbal instructions. There's no portable, shareable unit for "here's a complete AI worker."
+**Journal** - a daily log that traces what the agent did, what worked, and what the user preferred. The agent reads past entries before starting work. Over time it stops being a blank slate and builds real context.
 
-## What MEMBER.md does
+**Skills** - a focused subset of capabilities the member owns. Each skill is a [SKILL.md](https://agentskills.io) file. The member gets better at these through use and journal feedback.
 
-MEMBER.md is a directory convention that composes existing standards into a deployable AI team member. It doesn't replace SKILL.md or AGENTS.md. It bundles them - along with whatever tools the member needs (REST APIs, CLIs, MCP servers, anything).
-
-A member directory is self-contained. Zip it, hand it to someone, they drop it in their project. Every file inside uses formats that existing tools already read.
+**Tools** - a scoped set of APIs, CLIs, and integrations the member has access to. Clear boundaries on what it can and can't touch.
 
 See [SPEC.md](./SPEC.md) for the full format specification.
 
@@ -53,7 +43,7 @@ role: Sales Development Rep
 ---
 ```
 
-Below the frontmatter: persona, workflow, and rules the member follows. Add `skills/`, `tools/`, and `context/` subdirectories when the member needs its own capabilities or knowledge.
+Below the frontmatter: persona, workflow, and rules the member follows. Add `skills/`, `tools/`, `context/`, and `journal/` subdirectories as needed.
 
 For simple members, a flat file works too -- `team/executor.md` instead of `team/executor/MEMBER.md`.
 
@@ -88,13 +78,14 @@ When activated as a specific member:
 2. Load skills from `team/<name>/skills/`
 3. Load context from `team/<name>/context/`
 4. Use tools from `team/<name>/tools/`
-5. Operate within declared permissions
+5. Read journal from `team/<name>/journal/` before starting
+6. Operate within declared permissions
 ```
 
 Activate directly:
 
 ```
-You are the **navigator**. Read `team/navigator/MEMBER.md` before doing anything.
+You are the **content-lead**. Read `team/content-lead/MEMBER.md` before doing anything.
 ```
 
 Multi-agent via subagents:
@@ -136,10 +127,14 @@ Any AI tool that reads markdown can use members:
 
 1. Scan `team/*/MEMBER.md` (directory) and `team/*.md` (flat file)
 2. Parse YAML frontmatter for metadata
-3. Load skills, tools, and context from subdirectories
+3. Load skills, tools, context, and journal from subdirectories
 4. Follow the persona and rules in the body
 
 No special parser. It's directories and markdown all the way down.
+
+## Works with OpenClaw
+
+MEMBER.md is designed to be agent-first. For platforms with their own memory system (e.g., OpenClaw's `memory/` directory), the journal maps onto that system. Skills map to OpenClaw skills. The format is portable across platforms.
 
 ## License
 

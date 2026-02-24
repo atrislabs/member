@@ -1,6 +1,6 @@
 # MEMBER.md
 
-A directory standard for defining AI agent team members.
+A directory standard for defining agent team members.
 
 ```
 team/content-lead/

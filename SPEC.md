@@ -55,6 +55,7 @@ YAML frontmatter at the top of the file, delimited by `---`.
 | `skills` | list | Capability names. See [Skills resolution](#skills-resolution). |
 | `permissions` | map | Permission declarations. See [Permissions](#permissions). |
 | `tools` | list | Tool names. See [Tools](#tools). |
+| `agent-id` | string | Links this member to a cloud agent. Set by the platform on first push -- not manually authored. |
 
 ## Body
 

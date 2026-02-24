@@ -61,7 +61,8 @@ For simple members, a flat file works too -- `team/executor.md` instead of `team
 
 | Member | Format | What it demonstrates |
 |--------|--------|---------------------|
-| [chief-of-staff/](./team/chief-of-staff/) | directory | **Showcase** - stateful member with journal loop that learns over time |
+| [content-lead/](./team/content-lead/) | directory | **Showcase** - writing pipeline with skills, tools, and journal that tracks voice preferences |
+| [chief-of-staff/](./team/chief-of-staff/) | directory | Stateful member with journal loop that learns over time |
 | [sdr/](./team/sdr/) | directory | Full member with skills, tools, and context |
 | [navigator/](./team/navigator/) | directory | Member with local skills, no tools or context |
 | [spec-author/](./team/spec-author/) | directory | Member with context only, no skills or tools |

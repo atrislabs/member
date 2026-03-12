@@ -1,6 +1,6 @@
 # MEMBER.md
 
-A directory standard for defining agent team members.
+A directory standard for defining intelligent team members.
 
 ```
 team/content-lead/
@@ -13,13 +13,13 @@ team/content-lead/
 
 ## Why
 
-Agents start from scratch every session. No memory of what worked, no sense of what you prefer, no way to build on past runs. Meanwhile, standards exist for the pieces (SKILL.md, MCP, AGENTS.md) but not for the complete worker.
+Team members start from scratch every session. No memory of what worked, no sense of what you prefer, no way to build on past runs. Meanwhile, standards exist for the pieces (SKILL.md, MCP, AGENTS.md) but not for the complete worker.
 
-MEMBER.md bundles persona, skills, tools, context, and a journal into one portable directory.
+MEMBER.md bundles persona, skills, tools, context, and a journal into one portable directory. The spec is operator-agnostic -- the same member definition works whether operated by a human, an AI, or both.
 
 ## What's in a member
 
-`journal/` tracks what the agent did and what the user preferred. The agent reads past entries before starting. This is what makes a member stateful.
+`journal/` tracks what was done and what the operator preferred. The member reads past entries before starting. This is what makes a member stateful.
 
 `skills/` contains [SKILL.md](https://agentskills.io) files for the capabilities this member owns.
 
@@ -50,6 +50,7 @@ Start with [content-lead/](./team/content-lead/), which has skills, tools, and a
 |--------|--------|-------------|
 | [content-lead/](./team/content-lead/) | directory | Writing pipeline with journal that tracks voice preferences |
 | [sdr/](./team/sdr/) | directory | Sales member with skills, tools, and context |
+| [product-manager/](./team/product-manager/) | directory | PM with roadmap context and stakeholder workflows |
 | [chief-of-staff/](./team/chief-of-staff/) | directory | Stateful briefing agent with journal loop |
 | [navigator/](./team/navigator/) | directory | Planner with local skills |
 | [executor.md](./team/executor.md) | flat file | Builder with abstract skill references |

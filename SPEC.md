@@ -1,12 +1,12 @@
 # MEMBER.md Specification
 
-Version 0.1.0
+Version 0.2.0
 
 ## Overview
 
-MEMBER.md is a directory convention for defining complete AI team members. It composes existing standards -- [SKILL.md](https://agentskills.io) for capabilities, [AGENTS.md](https://github.com/anthropics/agents-md) for project instructions -- and any tool access (APIs, CLIs, MCP servers) into a single portable unit.
+MEMBER.md is a directory convention for defining intelligent team members. It composes existing standards -- [SKILL.md](https://agentskills.io) for capabilities, [AGENTS.md](https://github.com/anthropics/agents-md) for project instructions -- and any tool access (APIs, CLIs, MCP servers) into a single portable unit.
 
-A member is a directory (or a single file) containing everything an AI agent needs to assume a role: identity, skills, tools, permissions, and domain knowledge.
+A member is a directory (or a single file) containing everything needed to operate a role: identity, skills, tools, permissions, and domain knowledge. The spec is operator-agnostic -- the same member definition works whether operated by a human, an AI, or both.
 
 ## Formats
 
@@ -143,3 +143,4 @@ For flat-file members, tool names serve as references to tools configured elsewh
 - **A directory, not a format.** The spec is a folder convention. No new parsers needed.
 - **Portable by default.** Zip a member directory. It works anywhere.
 - **Tool-agnostic.** Nothing is tied to a specific AI tool or vendor.
+- **Operator-agnostic.** A member defines a role, not a species. Who operates it -- human, AI, or both -- is a runtime decision, not a spec concern.

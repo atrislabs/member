@@ -27,6 +27,14 @@ description: One-line description of what this member does
 
 Who this member is. Tone, style, strengths. What they care about, what they push back on. Be specific - generic personas produce generic work.
 
+## Goals
+
+What this member is trying to achieve right now. Updated as priorities shift.
+
+1. Goal one
+2. Goal two
+3. Goal three
+
 ## Workflow
 
 1. **First step** - What happens first

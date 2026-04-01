@@ -101,6 +101,7 @@ Logs are append-only during the day. The Handoff section is the most important -
 Markdown below the frontmatter defines the member's persona and operating instructions. The format is freeform, but the following sections are conventional:
 
 - **Persona** - Who this member is. Tone, style, strengths, opinions.
+- **Goals** - What this member is trying to achieve. Updated by the member or by skills like /flow as priorities shift.
 - **Workflow** - Numbered steps for how the member operates.
 - **Rules** - Hard constraints this member always follows.
 

@@ -57,6 +57,45 @@ YAML frontmatter at the top of the file, delimited by `---`.
 | `tools` | list | Tool names. See [Tools](#tools). |
 | `agent-id` | string | Links this member to a cloud agent. Set by the platform on first push -- not manually authored. |
 
+## Logs
+
+Members maintain daily logs that make them stateful across sessions. Logs follow the Atris log convention:
+
+```
+<name>/
+  logs/
+    YYYY/
+      YYYY-MM-DD.md
+```
+
+### Log format
+
+Each daily log uses these sections:
+
+```markdown
+# Log -- YYYY-MM-DD
+
+## Handoff
+<!-- Key context for the next session to pick up -->
+
+## Completed ✅
+<!-- Work finished today -->
+
+## In Progress 🔄
+<!-- Active work -->
+
+## Backlog
+<!-- Queued work -->
+
+## Notes
+<!-- Observations, decisions, learnings -->
+
+## Inbox
+<!-- Incoming items to triage -->
+```
+
+Logs are append-only during the day. The Handoff section is the most important -- it's what the next session reads first to resume context. Durable preferences confirmed across multiple sessions go in `preferences.md` alongside the logs directory.
+
 ## Body
 
 Markdown below the frontmatter defines the member's persona and operating instructions. The format is freeform, but the following sections are conventional:
@@ -80,8 +119,9 @@ For directory-format members:
     .mcp.json                       MCP servers (if needed)
   context/               OPTIONAL   Domain knowledge
     *.md
-  journal/               OPTIONAL   Accumulated learning
-    *.md
+  logs/                  OPTIONAL   Daily logs (stateful across sessions)
+    YYYY/
+      YYYY-MM-DD.md
 ```
 
 ### skills/
@@ -96,15 +136,11 @@ Any tool access the member needs. REST APIs as markdown docs with endpoints and 
 
 Markdown files with domain knowledge. Playbooks, ICPs, SOPs, reference docs. No special format -- just documents the member references while working.
 
-### journal/
+### logs/
 
-Accumulated learning from past runs. The journal is what makes a member stateful -- it reads past entries before working and writes new entries after. Over time, the member adapts to the user's preferences and patterns without being explicitly configured.
+Daily logs that make a member stateful across sessions. See [Logs](#logs) for the full format specification.
 
-Convention:
-- Daily entries in `YYYY-MM-DD.md` (append-only run logs)
-- Durable preferences in `preferences.md` (updated when patterns are confirmed across multiple runs)
-
-The journal directory is empty on first install. It grows as the member works. For platforms with their own memory system (e.g., OpenClaw's `memory/` directory), the journal maps onto that system instead.
+The logs directory is empty on first install. It grows as the member works. For platforms with their own memory system (e.g., OpenClaw's `memory/` directory), the logs map onto that system instead.
 
 ## Skills resolution
 

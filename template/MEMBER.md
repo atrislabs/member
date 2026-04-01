@@ -20,7 +20,7 @@ description: One-line description of what this member does
 #   skills/<name>/SKILL.md   - capability definitions
 #   tools/                   - API docs, CLI guides, .mcp.json
 #   context/                 - domain knowledge (playbooks, SOPs)
-#   journal/                 - accumulated learning (grows over time)
+#   logs/YYYY/YYYY-MM-DD.md  - daily logs (grows over time)
 ---
 
 ## Persona

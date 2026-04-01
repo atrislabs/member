@@ -101,9 +101,28 @@ Logs are append-only during the day. The Handoff section is the most important -
 Markdown below the frontmatter defines the member's persona and operating instructions. The format is freeform, but the following sections are conventional:
 
 - **Persona** - Who this member is. Tone, style, strengths, opinions.
-- **Goals** - What this member is trying to achieve. Updated by the member or by skills like /flow as priorities shift.
 - **Workflow** - Numbered steps for how the member operates.
 - **Rules** - Hard constraints this member always follows.
+
+## Atris Integration
+
+MEMBER.md is native to the Atris operating system. Every member participates in the atris loop:
+
+- **Logs** follow the atris log convention (Handoff, Completed, In Progress, Backlog, Notes, Inbox). See [Logs](#logs).
+- **Goals** are checked every session. Skills like /flow read goals.md, track progress against it, and update it as priorities shift.
+- **MAP.md** -- members know the workspace index. They don't grep blindly. They read MAP.md first.
+- **Skills** -- members compose skills. A member with `skills: [flow, brain]` can invoke those capabilities.
+- **Team** -- members can read other members' logs and delegate work across the team.
+- **Plan-Do-Review** -- work flows through stages. Members respect the loop: understand before you act, validate after you build.
+
+When a member is loaded (by /flow, by another skill, or by direct invocation), the loader should:
+
+1. Read MEMBER.md (identity)
+2. Read goals.md (ambition) -- create if missing
+3. Read latest log (state)
+4. Read MAP.md (navigation)
+
+This gives the member full situational awareness from the first message.
 
 ## Directory structure
 
@@ -112,6 +131,7 @@ For directory-format members:
 ```
 <name>/
   MEMBER.md              REQUIRED   Manifest and persona
+  goals.md               AUTO       Created/updated by the member or by skills like /flow
   skills/                OPTIONAL   SKILL.md files (capabilities)
     <skill-name>/
       SKILL.md
@@ -124,6 +144,16 @@ For directory-format members:
     YYYY/
       YYYY-MM-DD.md
 ```
+
+### goals.md
+
+What this member is trying to achieve. Not a todo list -- those go in logs. Goals are directional. They answer "what does success look like this week/month/quarter?"
+
+Goals are auto-managed. If goals.md doesn't exist, the first session that knows about goals (like /flow) creates it by asking the member what they're working toward. If it exists, skills read it to stay aligned and update it as priorities shift.
+
+MEMBER.md enforces this: when reading a member, always check for `goals.md`. If missing, create it during the session. If stale (goals achieved or irrelevant), prompt to update.
+
+Format is freeform markdown. Keep it short. A goal that takes a paragraph to explain is too vague.
 
 ### skills/
 

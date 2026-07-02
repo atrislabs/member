@@ -1,6 +1,10 @@
 # MEMBER.md
 
+[![GitHub stars](https://img.shields.io/github/stars/atrislabs/member?style=social)](https://github.com/atrislabs/member/stargazers)
+
 A directory standard for defining intelligent team members.
+
+**Agents:** read [`FOR_AGENTS.md`](FOR_AGENTS.md) first.
 
 ```
 team/content-lead/

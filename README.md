@@ -81,3 +81,7 @@ Works with Claude Code (CLAUDE.md), Codex (AGENTS.md), Cursor (.cursorrules), Op
 ## License
 
 MIT
+
+## Atris ecosystem
+
+[atris](https://github.com/atrislabs/atris) · [atris-tasks](https://github.com/atrislabs/atris-tasks) · [app.md](https://github.com/atrislabs/app.md) · [`FOR_AGENTS.md`](FOR_AGENTS.md)

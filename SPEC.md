@@ -1,12 +1,14 @@
 # MEMBER.md Specification
 
-Version 0.2.0
+Version 0.3.0
 
 ## Overview
 
 MEMBER.md is a directory convention for defining intelligent team members. It composes existing standards -- [SKILL.md](https://agentskills.io) for capabilities, [AGENTS.md](https://github.com/anthropics/agents-md) for project instructions -- and any tool access (APIs, CLIs, MCP servers) into a single portable unit.
 
 A member is a directory (or a single file) containing everything needed to operate a role: identity, skills, tools, permissions, and domain knowledge. The spec is operator-agnostic -- the same member definition works whether operated by a human, an AI, or both.
+
+For an agent, the folder is the agent: it carries identity, capabilities, and memory between sessions. The model and the computer are swappable, so the folder can move to another model or computer and continue its work.
 
 ## Formats
 
@@ -50,6 +52,18 @@ YAML frontmatter at the top of the file, delimited by `---`.
 
 | Field | Type | Description |
 |-------|------|-------------|
+| `type` | string | Who the member is: `ai` (the default), `agent` (an alias for `ai`), or `human`. Atris does not run human or unknown types. |
+| `status` | string | `parked` hides the member from normal team views while keeping its folder and state. It can still be called by name. |
+| `scope` | list | Paths describing the member's area of work. |
+| `verify` | string | Command used to check the member's work. |
+| `engine` | string | Preferred execution engine. |
+| `model` | string | Preferred or pinned model. |
+| `traits` | list | Personality traits describing the member. |
+| `member_id` | string | Stable agent ID (`agents.id`). |
+| `slug` | string | Short name used to identify the member. |
+| `parent` | string or null | Parent agent ID, or null when there is no parent. |
+| `public_key` | string | Ed25519 public key encoded in base64. |
+| `format` | integer | Manifest format version. Use `1` for this folder format. |
 | `description` | string | One-line summary of what this member does. |
 | `version` | string | Semver version of this member definition. |
 | `skills` | list | Capability names. See [Skills resolution](#skills-resolution). |
@@ -63,10 +77,13 @@ Members maintain daily logs that make them stateful across sessions. Logs follow
 
 ```
 <name>/
-  logs/
+  journal/
     YYYY/
-      YYYY-MM-DD.md
+      MM/
+        DD.md
 ```
+
+`logs/` is the older name. Readers should accept it for existing members.
 
 ### Log format
 
@@ -94,7 +111,7 @@ Each daily log uses these sections:
 <!-- Incoming items to triage -->
 ```
 
-Logs are append-only during the day. The Handoff section is the most important -- it's what the next session reads first to resume context. Durable preferences confirmed across multiple sessions go in `preferences.md` alongside the logs directory.
+The Handoff section is the most important -- it's what the next session reads first to resume context. Durable preferences confirmed across multiple sessions can go in `memory/MEMORY.md`.
 
 ## Body
 
@@ -131,6 +148,13 @@ For directory-format members:
 ```
 <name>/
   MEMBER.md              REQUIRED   Manifest and persona
+  SOUL.md                OPTIONAL   Identity and character
+  MISSION.md             OPTIONAL   Purpose and mission
+  card.md                OPTIONAL   Member summary
+  memory/                OPTIONAL   Lessons and session notes
+    MEMORY.md                       Consolidated lessons
+    notes/
+      <utc-ts>-<session>.md         One note file per session
   goals.md               AUTO       Created/updated by the member or by skills like /flow
   skills/                OPTIONAL   SKILL.md files (capabilities)
     <skill-name>/
@@ -140,10 +164,28 @@ For directory-format members:
     .mcp.json                       MCP servers (if needed)
   context/               OPTIONAL   Domain knowledge
     *.md
-  logs/                  OPTIONAL   Daily logs (stateful across sessions)
+  journal/               OPTIONAL   Daily logs (stateful across sessions)
     YYYY/
-      YYYY-MM-DD.md
+      MM/
+        DD.md
 ```
+
+### Fixed versus rewritable
+
+| File | Who can change it |
+|------|-------------------|
+| `MEMBER.md` | The owner may change it. The agent may not. |
+| Everything else in the folder | The agent may rewrite it. |
+
+Secrets never live in the folder. Session notes use one file per session and are added without overwriting other sessions.
+
+### SOUL.md, MISSION.md, and card.md
+
+`SOUL.md` describes the member's identity and character. `MISSION.md` describes its purpose. `card.md` holds a short member summary.
+
+### memory/
+
+`memory/MEMORY.md` holds consolidated lessons. Add session notes at `memory/notes/<utc-ts>-<session>.md`, using a UTC timestamp and session identifier to keep sessions separate.
 
 ### goals.md
 
@@ -167,11 +209,11 @@ Any tool access the member needs. REST APIs as markdown docs with endpoints and 
 
 Markdown files with domain knowledge. Playbooks, ICPs, SOPs, reference docs. No special format -- just documents the member references while working.
 
-### logs/
+### journal/
 
 Daily logs that make a member stateful across sessions. See [Logs](#logs) for the full format specification.
 
-The logs directory is empty on first install. It grows as the member works. For platforms with their own memory system (e.g., OpenClaw's `memory/` directory), the logs map onto that system instead.
+The journal directory is empty on first install. It grows as the member works. For platforms with their own memory system (e.g., OpenClaw's `memory/` directory), the journal maps onto that system instead.
 
 ## Skills resolution
 
